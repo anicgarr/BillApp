@@ -41,9 +41,9 @@
                                         <td th:text="${bill.creditorName}"></td>
                                         <td th:text="${bill.creditorPhoneNumber}"></td>
                                         <td th:number="${bill.billAmount}"></td>
-                                        <td th:date="${bill.billDueDate}"></td>
-                                        <td th:date="${bill.billingCycleStartDate}"></td>
-                                        <td th:date="${bill.billingCycleEnddate}"></td>
+                                        <td th:text="${bill.billDueDate}"></td>
+                                        <td th:text="${bill.billingCycleStartDate}"></td>
+                                        <td th:text="${bill.billingCycleEndDate}"></td>
                                         <td><a th:href="@{/bills/edit/{id}(id=${bill.billId})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
                                         <td><a th:href="@{/bills/delete/{id}(id=${bill.billId})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
                                     </tr>

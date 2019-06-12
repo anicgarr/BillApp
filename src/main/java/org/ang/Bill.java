@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 		
 		@Table(name="bill")
 		@Entity
@@ -23,11 +25,15 @@ import javax.persistence.Table;
 			@Column
 			private Long billAmount;	
 			@Column
-			private String billDueDate;
+			@DateTimeFormat(pattern = "yyyy-MM-dd")
+			private Date billDueDate;
 			@Column
-			private String billingCycleStartDate;
+			@DateTimeFormat(pattern = "yyyy-MM-dd")
+			private Date billingCycleStartDate;
 			@Column
-			private String billingCycleEndDate; 
+			@DateTimeFormat(pattern = "yyyy-MM-dd")
+
+			private Date billingCycleEndDate; 
 				
 
 			public Bill() {
@@ -62,22 +68,22 @@ import javax.persistence.Table;
 			public void setBillAmount(Long billAmount) {
 				this.billAmount = billAmount;
 			}
-			public String getBillDueDate() {
+			public Date getBillDueDate() {
 				return billDueDate;
 			}
-			public void setBillDueDate(String billDueDate) {
+			public void setBillDueDate(Date billDueDate) {
 				this.billDueDate = billDueDate;
 			}
-			public String getBillingCycleStartDate() {
+			public Date getBillingCycleStartDate() {
 				return billingCycleStartDate;
 			}
-			public void setBillingCycleStartDate(String billingCycleStartDate) {
+			public void setBillingCycleStartDate(Date billingCycleStartDate) {
 				this.billingCycleStartDate = billingCycleStartDate;
 			}
-			public String getBillingCycleEndDate() {
+			public Date getBillingCycleEndDate() {
 				return billingCycleEndDate;
 			}
-			public void setBillingCycleEndDate(String billingCycleEndDate) {
+			public void setBillingCycleEndDate(Date billingCycleEndDate) {
 				this.billingCycleEndDate = billingCycleEndDate;
 			}
 

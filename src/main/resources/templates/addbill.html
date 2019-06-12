@@ -10,10 +10,10 @@
 <form action="#" th:action="@{/addbill}" th:object="${bill}" method="post">
 <p>Company Name: <input type="text" name="creditorName"></p>
 <p>Amount: $ <input type="number" name="billAmount"></p>
-<p>Due Date: <input type="date" name="billDueDate"></p>
+<p>Due Date: <input type="date" name="billDueDate" th:placeholder="*{billDueDate}" th:value="*{billDueDate}" th:field="*{billDueDate}"></p>
 <p>Company Phone Number: <input type="text" name="creditorPhoneNumber"/></p>
-<p>Billing Cycle Start Date: <input type="date" name="billingCycleStartDate"></p>
-<p>Billing Cycle End Date: <input type="date" name="billingCycleEndDate"></p>
+<p>Billing Cycle Start Date: <input type="date" name="billingCycleStartDate"  th:placeholder="*{billingCycleStartDate}" th:value="*{billingCycleStartDate}" th:field="*{billingCycleStartDate}"></p>
+<p>Billing Cycle End Date: <input type="date" name="billingCycleEndDate" th:placeholder="*{billingCycleEndDate}" th:value="*{billingCycleEndDate}" th:field="*{billingCycleEndDate}"  ></p>
 
 <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"></p>
 </form>
