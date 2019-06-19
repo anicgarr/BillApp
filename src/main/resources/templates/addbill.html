@@ -2,20 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Add A Bill</title>
+<link rel="stylesheet" href="./styles.css" th:href= "@{css/styles.css}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<h1>Add Your New Bill Here:</h1>
-<form action="#" th:action="@{/addbill}" th:object="${bill}" method="post">
-<p>Company Name: <input type="text" name="creditorName"></p>
-<p>Amount: $ <input type="number" name="billAmount"></p>
-<p>Due Date: <input type="date" name="billDueDate" th:placeholder="*{billDueDate}" th:value="*{billDueDate}" th:field="*{billDueDate}"></p>
-<p>Company Phone Number: <input type="text" name="creditorPhoneNumber"/></p>
-<p>Billing Cycle Start Date: <input type="date" name="billingCycleStartDate"  th:placeholder="*{billingCycleStartDate}" th:value="*{billingCycleStartDate}" th:field="*{billingCycleStartDate}"></p>
-<p>Billing Cycle End Date: <input type="date" name="billingCycleEndDate" th:placeholder="*{billingCycleEndDate}" th:value="*{billingCycleEndDate}" th:field="*{billingCycleEndDate}"  ></p>
+<img class="logo" src="/images/logo_transparent.png">
 
-<p><input type="submit" value="Submit"/> <input type="reset" value="Reset"></p>
+<h1 class="header">ENTER BILL INFO:</h1>
+<form action="#" th:action="@{/addbill}" th:object="${bill}" method="post">
+<p class="form">Company Name: <input type="text" name="creditorName"></p>
+<p class="form">Amount: $ <input type="text" name="billAmount" placeholder="in dollars..."/></p>
+<p class="form">Due Date: <input type="date" name="billDueDate" th:placeholder="*{billDueDate}" th:value="*{billDueDate}" th:field="*{billDueDate}"></p>
+<p class="form">Company Phone Number: <input type="text" name="creditorPhoneNumber"placeholder="xxx-xxx-xxxx"/></p>
+<p class="form">Billing Cycle Start Date: <input type="date" name="billingCycleStartDate"  th:placeholder="*{billingCycleStartDate}" th:value="*{billingCycleStartDate}" th:field="*{billingCycleStartDate}"></p>
+<p class="form">Billing Cycle End Date: <input type="date" name="billingCycleEndDate" th:placeholder="*{billingCycleEndDate}" th:value="*{billingCycleEndDate}" th:field="*{billingCycleEndDate}"  ></p>
+<div class="centerbuttons">
+<p><input type="submit" value="Submit"/> <input class="button2" type="reset" value="Reset"></p>
+</div>
 </form>
+<p class="centerbuttons"><a href='http://localhost:8080/listofbills'><button class="button3">Back to Bill List</button></a></p>
+
 </body>
 </html>

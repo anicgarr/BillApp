@@ -2,28 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+<link rel="stylesheet" href="./styles.css" th:href= "@{css/styles.css}">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Update User</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
 </head>
 
 <body>
-    <div class="container my-5">
-        <h3> Update Bill</h3>
-        <div class="card">
-            <div class="card-body">
-                <div class="col-md-8">
-                    <form action="#" th:action="@{/students/update/{billid}(billId=${bill.billId})}" th:object="${student}" method="post">
-                        <<p>Company Name: <input type="text" name="creditorName"></p>
-<p>Amount: $ <input type="number" name="billAmount"></p>
-<p>Due Date: <input type="date" name="billDueDate"></p>
-<p>Company Phone Number: <input type="text" name="creditorPhoneNumber"/></p>
-<p>Billing Cycle Start Date: <input type="date" name="billingCycleStartDate"></p>
-<p>Billing Cycle End Date: <input type="date" name="billingCycleEndDate"></p>
-                                <input type="submit" class="btn btn-primary" value="Update Bill">
+    <div>
+        <h3 class="header"> UPDATE BILL</h3>
+        <div >
+            <div >
+                <div>
+                    <form action="#" th:action="@{/bills/update/{id}(id=${bill.id})}" th:object="${bill}" method="post">
+                        <p class="form">Company Name: <input type="text" name="creditorName"></p>
+<p class="form">Amount: $ <input type="text" name="billAmount"></p>
+<p class="form">Due Date: <input type="date" name="billDueDate"></p>
+<p class="form">Company Phone: <input type="text" name="creditorPhoneNumber"></p>
+<p class= "form">Billing Cycle Start Date: <input type="date" name="billingCycleStartDate"></p>
+<p class="form">Billing Cycle End Date: <input type="date" name="billingCycleEndDate"></p>
+<div class="centerbuttons">
+                                <input class="button1" type="submit" value="Submit">
+                              </div>
                             </div>
                         </div>
                     </form>

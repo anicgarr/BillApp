@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.ang.BillRepository;
 import org.ang.Bill;
 
 @Controller
+//@RequestMapping("/bills/")
 public class BillController {
 	
 //@Autowired
@@ -55,49 +57,47 @@ public class BillController {
 	
 		  billRepository.save(bill);
 	     return "redirect:listofbills";
-	        
 	           
 	  }
 	    
 
 	  @GetMapping("listofbills")
-	    public String showUpdateForm(Model model) {
+	    public String showListOfBills(Model model) {
 	        model.addAttribute("bills", billRepository.findAll());
 	        return "listofbills";
 	    }
 
-
 	  
 
-	    @GetMapping("edit/{billId}")
-	    public String showUpdateForm(@PathVariable("billId") long billId, Model model) {
-	        Bill bill = billRepository.findById(billId)
-	            .orElseThrow(() -> new IllegalArgumentException("Invalid Bill Id:" + billId));
+	    @GetMapping("edit/{id}")
+	    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+	        Bill bill = billRepository.findById(id)
+	            .orElseThrow(() -> new IllegalArgumentException("Invalid Bill Id:" + id));
 	        model.addAttribute("bill", bill);
 	        return "updatebill";
 	    }
 
-	    @PostMapping("update/{billId}")
-	    public String updateBill(@PathVariable("billId") long billId, @Valid Bill bill, BindingResult result,
+	    @PostMapping("update/{id}")
+	    public String updateBill(@PathVariable("id") long id, @Valid Bill bill, BindingResult result,
 	        Model model) {
 	        if (result.hasErrors()) {
-	            bill.setBillId(billId);
+	            bill.setId(id);
 	            return "updatebill";
 	        }
 
 	        billRepository.save(bill);
 	        model.addAttribute("bills", billRepository.findAll());
-	        return "listofbills";
-	    }
-//
-//	    @GetMapping("delete/{id}")
-//	    public String deleteBill(@PathVariable("billId") long billId, Model model) {
-//	        Bill bill = billRepository.findById(billId)
-//	            .orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + billId));
-//	        billRepository.delete(bill);
-//	        model.addAttribute("bills", billRepository.findAll());
-//	        return "index";
-//	    }  
+	        return "redirect:listofbills";
+	    }	    
+
+
+    @GetMapping("delete/{id}")
+    public String deleteBill(@PathVariable("id") long id, Model model) {
+        Bill bill = billRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid bill Id:" + id));
+	        billRepository.delete(bill);
+        model.addAttribute("bills", billRepository.findAll());
+	        return "listofbills" ;     }  
 		
 
 }

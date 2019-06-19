@@ -5,9 +5,11 @@ package org.ang;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 
 		
@@ -16,16 +18,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 		public class Bill {
 			
 			@Id
-			@GeneratedValue
-			private long billId;
+			@GeneratedValue(strategy = GenerationType.AUTO)
+			private long id;
 			@Column
 			private String creditorName;
 			@Column
 			private String creditorPhoneNumber; 
 			@Column
-			private Long billAmount;	
+			private String billAmount;	
 			@Column
-			@DateTimeFormat(pattern = "yyyy-MM-dd")
+			@DateTimeFormat(pattern = "MM-dd-yyyy")
 			private Date billDueDate;
 			@Column
 			@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -40,16 +42,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 			}
 			
 			
-			public Bill(long billId, String creditorName, String creditorPhoneNumber, long billAmount){
-				// TODO Auto-generated constructor stub
+			public Bill(long id, String creditorName, String creditorPhoneNumber, String billAmount){
 			} 
-			public long getBillId() {
-				return billId;
+			public long getId() {
+				return id;
 			}
-			public void setBillId(long billId) {
-				this.billId = billId;
+			
+			public void setId(long id) {
+				this.id=id;
 			}
 
+			
 		public String getCreditorName() {
 				return creditorName;
 			}
@@ -62,10 +65,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 			public void setCreditorPhoneNumber(String creditorPhoneNumber) {
 				this.creditorPhoneNumber = creditorPhoneNumber;
 			}
-			public Long getBillAmount() {
+			public String getBillAmount() {
 				return billAmount;
 			}
-			public void setBillAmount(Long billAmount) {
+			public void setBillAmount(String billAmount) {
 				this.billAmount = billAmount;
 			}
 			public Date getBillDueDate() {
@@ -86,6 +89,35 @@ import org.springframework.format.annotation.DateTimeFormat;
 			public void setBillingCycleEndDate(Date billingCycleEndDate) {
 				this.billingCycleEndDate = billingCycleEndDate;
 			}
+
+
+			@Override
+			public int hashCode() {
+				final int prime = 31;
+				int result = 1;
+				result = prime * result + (int) (id ^ (id >>> 32));
+				return result;
+			}
+
+
+			@Override
+			public boolean equals(Object obj) {
+				if (this == obj)
+					return true;
+				if (obj == null)
+					return false;
+				if (getClass() != obj.getClass())
+					return false;
+				Bill other = (Bill) obj;
+				if (id != other.id)
+					return false;
+				return true;
+			}
+
+
+		
+
+			
 
 
 			
