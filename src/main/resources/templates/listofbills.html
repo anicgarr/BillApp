@@ -16,16 +16,21 @@
         <div class="card">
             <div class="card-body">
                 <div th:switch="${bills}" class="container my-5">
-                
+                  <ul>
+                    <li><a href="/" >Home</a></li>
+                    <li><a href="/addbill">Add Bill</a></li>
+                    <li><a href="/listofbills">My Bills</a></li>
+                  </ul>
+
               <img class="logo2" src="/images/logo_transparent.png">
-                
+
                     <p class="my-5">
-           
+
                       <p><a href='http://localhost:8080/addbill'><button class="button3">Add A Bill</button></a></p>
 
                     </p>
-                    
-                    
+
+
                     <div class="col-md-10">
                         <h2 th:case="null">No Bills added!</h2>
                         <div th:case="*">

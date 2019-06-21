@@ -42,6 +42,11 @@ public class BillController {
 	public void setBillRepository(@Lazy BillRepository billRepository) {
 	    this.billRepository = billRepository;
 	}
+ 
+ 		@GetMapping("/")
+ 		public String showHomePage() {
+ 			return "index";
+ 		}
 	
 	  @GetMapping("addbill")
 	    public String addABillPage(Bill bill) {
