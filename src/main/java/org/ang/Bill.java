@@ -1,6 +1,7 @@
 package org.ang;
 
 	import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +28,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 			@Column
 			private String billAmount;	
 			@Column
-			@DateTimeFormat(pattern = "MM-dd-yyyy")
+			@DateTimeFormat(pattern = "yyyy-MM-dd")
 			private Date billDueDate;
 			@Column
 			@DateTimeFormat(pattern = "yyyy-MM-dd")

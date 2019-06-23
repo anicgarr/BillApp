@@ -7,6 +7,11 @@
     <title>BillAppHomePage</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+<div class="container">
+  <h2>Hi <span th:utext="${userName}"></span>, welcome to BillApp.
+  <a th:href="@{/logout}">Sign out</a>
+ </div>
+
 <body>
   <ul>
     <li><a href="/" >Home</a></li>
@@ -15,11 +20,14 @@
   </ul>
 
 
-    <p></p>
-    <img class="logo2" src="/images/logo_transparent.png">
+    <img class="logo" src="/images/logo_transparent.png">
 
 
 
 
 </body>
+<footer class="footer">
+Updated:2019
+
+</footer>
 </html>

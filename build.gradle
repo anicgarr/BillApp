@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.4.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
     }
 }
 
@@ -31,6 +31,11 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+        testCompile("org.springframework.security:spring-security-test")
+      // https://mvnrepository.com/artifact/org.springframework.security/spring-security-config
+compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.1.5.RELEASE'
+        
+    
     
       runtimeOnly 'mysql:mysql-connector-java'
       // https://mvnrepository.com/artifact/com.h2database/h2

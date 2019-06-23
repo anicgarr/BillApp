@@ -1,6 +1,7 @@
 package org.ang;
 
 import java.util.Date;
+import java.util.Calendar;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -25,84 +26,80 @@ import org.ang.Bill;
 @Controller
 //@RequestMapping("/bills/")
 public class BillController {
-	
+
 //@Autowired
 //private BillRepository billRepository;
- // @Autowired
+	// @Autowired
 	private BillRepository billRepository;
-	
+
 // private final BillRepository billRepository;
 //  private BillRepository billRepository;
-   
+
 //   @Bean
 //   public BillRepository billRepository() {
 //       return new BillRepository();
 //   }
- @Autowired
+	@Autowired
 	public void setBillRepository(@Lazy BillRepository billRepository) {
-	    this.billRepository = billRepository;
+		this.billRepository = billRepository;
 	}
- 
- 		@GetMapping("/")
- 		public String showHomePage() {
- 			return "index";
- 		}
-	
-	  @GetMapping("addbill")
-	    public String addABillPage(Bill bill) {
-	        return "addbill";
 
+	@GetMapping("/home")
+	public String showHomePage() {
+		return "index";
+	}
+
+	@GetMapping("addbill")
+	public String addABillPage(Bill bill) {
+		return "addbill";
+
+	}
+
+	@PostMapping("addbill")
+	public String addBillSubmit(@Valid Bill bill, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+
+			return "index";
 		}
-	        
-	  @PostMapping("addbill")
-	    public String addBillSubmit(@Valid Bill bill, BindingResult result,Model model)	{
-		  	if(result.hasErrors())	{
-		  		return "addbill";
-		  	}
-	
-		  billRepository.save(bill);
-	     return "redirect:listofbills";
-	           
-	  }
-	    
 
-	  @GetMapping("listofbills")
-	    public String showListOfBills(Model model) {
-	        model.addAttribute("bills", billRepository.findAll());
-	        return "listofbills";
-	    }
+		billRepository.save(bill);
+		return "redirect:listofbills";
 
-	  
+	}
 
-	    @GetMapping("edit/{id}")
-	    public String showUpdateForm(@PathVariable("id") long id, Model model) {
-	        Bill bill = billRepository.findById(id)
-	            .orElseThrow(() -> new IllegalArgumentException("Invalid Bill Id:" + id));
-	        model.addAttribute("bill", bill);
-	        return "updatebill";
-	    }
+	@GetMapping("listofbills")
+	public String showListOfBills(Model model) {
+		model.addAttribute("bills", billRepository.findAll());
+		return "listofbills";
+	}
 
-	    @PostMapping("update/{id}")
-	    public String updateBill(@PathVariable("id") long id, @Valid Bill bill, BindingResult result,
-	        Model model) {
-	        if (result.hasErrors()) {
-	            bill.setId(id);
-	            return "updatebill";
-	        }
+	@GetMapping("edit/{id}")
+	public String showUpdateForm(@PathVariable("id") long id, Model model) {
+		Bill bill = billRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid Bill Id:" + id));
+		model.addAttribute("bill", bill);
+		return "updatebill";
+	}
 
-	        billRepository.save(bill);
-	        model.addAttribute("bills", billRepository.findAll());
-	        return "redirect:listofbills";
-	    }	    
+	@PostMapping("update/{id}")
+	public String updateBill(@PathVariable("id") long id, @Valid Bill bill, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			bill.setId(id);
+			return "updatebill";
+		}
 
+		billRepository.save(bill);
+		model.addAttribute("bills", billRepository.findAll());
+		return "listofbills";
+	}
 
-    @GetMapping("delete/{id}")
-    public String deleteBill(@PathVariable("id") long id, Model model) {
-        Bill bill = billRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("Invalid bill Id:" + id));
-	        billRepository.delete(bill);
-        model.addAttribute("bills", billRepository.findAll());
-	        return "listofbills" ;     }  
-		
+	@GetMapping("delete/{id}")
+	public String deleteBill(@PathVariable("id") long id, Model model) {
+		Bill bill = billRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid bill Id:" + id));
+		billRepository.delete(bill);
+		model.addAttribute("bills", billRepository.findAll());
+		return "listofbills";
+	}
 
 }
