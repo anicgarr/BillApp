@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<link rel="stylesheet" href="css/styles.css" th:href= "@{css/styles.css}">
-    <meta charset="utf-8">
+<link rel="stylesheet" href="../css/styles.css"
+	th:href="@{..//css/styles.css}">    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Update User</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +16,7 @@
     <li><a href="/addbill">Add Bill</a></li>
     <li><a href="/listofbills">My Bills</a></li>
   </ul>
+	<img class="logo2" src="/images/logo_transparent.png">
 
 
     <div>
@@ -23,7 +24,7 @@
         <div >
             <div >
                 <div>
-                    <form action="#" th:action="@{/bills/update/{id}(id=${bill.id})}" th:object="${bill}" method="post">
+                    <form action="#" th:action="@{/update/{id}(id=${bill.id})}" th:object="${bill}" method="post">
                         <p class="form">Company Name: <input type="text" name="creditorName"></p>
 <p class="form">Amount: $ <input type="text" name="billAmount"></p>
 <p class="form">Due Date: <input type="date" name="billDueDate"></p>

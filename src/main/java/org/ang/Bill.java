@@ -1,6 +1,7 @@
 package org.ang;
 
 	import java.util.Date;
+
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -28,15 +29,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 			@Column
 			private String billAmount;	
 			@Column
-			@DateTimeFormat(pattern = "yyyy-MM-dd")
-			private Date billDueDate;
+			@DateTimeFormat(pattern = "yyyy-MM-dd") 
+			private Calendar billDueDate;
 			@Column
 			@DateTimeFormat(pattern = "yyyy-MM-dd")
-			private Date billingCycleStartDate;
+			private Calendar billingCycleStartDate;
 			@Column
 			@DateTimeFormat(pattern = "yyyy-MM-dd")
-
-			private Date billingCycleEndDate; 
+			private Calendar billingCycleEndDate; 
 				
 
 			public Bill() {
@@ -72,22 +72,22 @@ import org.springframework.format.annotation.DateTimeFormat;
 			public void setBillAmount(String billAmount) {
 				this.billAmount = billAmount;
 			}
-			public Date getBillDueDate() {
+			public Calendar getBillDueDate() {
 				return billDueDate;
 			}
-			public void setBillDueDate(Date billDueDate) {
+			public void setBillDueDate(Calendar billDueDate) {
 				this.billDueDate = billDueDate;
 			}
-			public Date getBillingCycleStartDate() {
+			public Calendar getBillingCycleStartDate() {
 				return billingCycleStartDate;
 			}
-			public void setBillingCycleStartDate(Date billingCycleStartDate) {
+			public void setBillingCycleStartDate(Calendar billingCycleStartDate) {
 				this.billingCycleStartDate = billingCycleStartDate;
 			}
-			public Date getBillingCycleEndDate() {
+			public Calendar getBillingCycleEndDate() {
 				return billingCycleEndDate;
 			}
-			public void setBillingCycleEndDate(Date billingCycleEndDate) {
+			public void setBillingCycleEndDate(Calendar billingCycleEndDate) {
 				this.billingCycleEndDate = billingCycleEndDate;
 			}
 

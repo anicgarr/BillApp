@@ -27,24 +27,15 @@ import org.ang.Bill;
 //@RequestMapping("/bills/")
 public class BillController {
 
-//@Autowired
-//private BillRepository billRepository;
-	// @Autowired
+
 	private BillRepository billRepository;
 
-// private final BillRepository billRepository;
-//  private BillRepository billRepository;
-
-//   @Bean
-//   public BillRepository billRepository() {
-//       return new BillRepository();
-//   }
 	@Autowired
 	public void setBillRepository(@Lazy BillRepository billRepository) {
 		this.billRepository = billRepository;
 	}
 
-	@GetMapping("/home")
+	@GetMapping("home")
 	public String showHomePage() {
 		return "index";
 	}
@@ -59,7 +50,7 @@ public class BillController {
 	public String addBillSubmit(@Valid Bill bill, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 
-			return "index";
+			return "addbill";
 		}
 
 		billRepository.save(bill);
@@ -81,7 +72,7 @@ public class BillController {
 		return "updatebill";
 	}
 
-	@PostMapping("update/{id}")
+	@PostMapping("/update/{id}")
 	public String updateBill(@PathVariable("id") long id, @Valid Bill bill, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			bill.setId(id);
